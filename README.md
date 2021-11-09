@@ -8,7 +8,7 @@
 
 - Create admin endpoints (authors, articles) ✔️
 
-- Create User model
+- Create User model ✔️
 
 - Create login / sign in (JWT)
 
