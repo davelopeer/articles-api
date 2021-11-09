@@ -8,11 +8,11 @@
 
 - Create admin endpoints (authors, articles) ✔️
 
-- Make data-validation for endpoints
-
 - Create User model
 
 - Create login / sign in (JWT)
+
+- Make data-validation for endpoints
 
 - Create Authentication validation with database
 

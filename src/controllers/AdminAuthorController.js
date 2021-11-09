@@ -1,10 +1,11 @@
 
 const AdminAuthorsService = require('../services/AdminAuthorService');
+const constants = require('../config/constants');
 
 class AdminAuthorsController {
   async getAuthors(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const adminAuthorsService = new AdminAuthorsService();
@@ -15,7 +16,7 @@ class AdminAuthorsController {
 
   async getAuthorById(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
     const id = req.params.id;
 
@@ -23,7 +24,7 @@ class AdminAuthorsController {
     const author = await adminAuthorsService.getAuthorById(id);
 
     if (author.length === 0) {
-      res.status(404).json({ message: 'Author not found' });
+      res.status(constants.HTTP_STATUS.NOT_FOUND).json({ message: 'Author not found' });
     }
 
     res.json(author);
@@ -31,7 +32,7 @@ class AdminAuthorsController {
 
   async create(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const authorData = req.body;
@@ -43,7 +44,7 @@ class AdminAuthorsController {
 
   async update(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const authorData = req.body;
@@ -57,7 +58,7 @@ class AdminAuthorsController {
 
   async delete(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const authorId = req.params.id;
@@ -68,4 +69,6 @@ class AdminAuthorsController {
   }
 }
 
-module.exports = AdminAuthorsController;
+module.exports = {
+  AdminAuthorsController,
+}

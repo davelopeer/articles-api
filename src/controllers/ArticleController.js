@@ -1,4 +1,7 @@
 const ArticlesService = require('../services/ArticlesService');
+const constants = require('../config/constants');
+const { checkSchema } = require('express-validator');
+
 
 class ArticlesController {
   async getArticles(req, res) {
@@ -16,11 +19,13 @@ class ArticlesController {
     const articlesService = new ArticlesService();
     const article = await articlesService.getArticleById(id);
     if (article.length === 0) {
-      res.status(404).json({ message: 'Article not found' });
+      res.status(constants.HTTP_STATUS.NOT_FOUND).json({ message: 'Article not found' });
     }
 
     res.json(article);
   }
 }
 
-module.exports = ArticlesController;
+module.exports = {
+  ArticlesController,
+}

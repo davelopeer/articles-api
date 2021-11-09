@@ -2,6 +2,7 @@ const express = require('express')
 const db = require('./database')
 const router = require('./router')
 const { adminMiddleware, authenticationMiddleware } = require('./middlewares')
+const config = require('./config')
 
 const app = express()
 
@@ -14,4 +15,4 @@ app.use(authenticationMiddleware);
 
 app.use(router);
 
-app.listen(process.env.PORT || '8080')
+app.listen(process.env.PORT || config.httpPort)

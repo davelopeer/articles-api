@@ -1,10 +1,12 @@
 
+const constants = require('../config/constants');
 const AdminArticlesService = require('../services/AdminArticleService');
+
 
 class AdminArticlesController {
   async create(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const articleData = req.body;
@@ -16,7 +18,7 @@ class AdminArticlesController {
 
   async update(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const articleData = req.body;
@@ -30,7 +32,7 @@ class AdminArticlesController {
 
   async delete(req, res) {
     if (!req.isAdmin) {
-      return res.send(401, { 'error': 'Unauthorized' });
+      return res.send(constants.HTTP_STATUS.UNAUTHORIZED, { 'error': 'Unauthorized' });
     }
 
     const articleId = req.params.id;
@@ -41,4 +43,6 @@ class AdminArticlesController {
   }
 }
 
-module.exports = AdminArticlesController;
+module.exports = {
+  AdminArticlesController,
+}
