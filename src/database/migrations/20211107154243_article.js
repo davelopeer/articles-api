@@ -8,12 +8,12 @@ exports.up = function(knex) {
     table.text('first_paragraph').notNullable();
     table.text('body').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now())
-    table.integer('author_id').notNullable();
-    table
-        .foreign('author_id')
-        .references('id')
-        .inTable('author')
-        .onDelete('CASCADE');
+    table.integer('author_id')
+      .references('id')
+      .inTable('author')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+      .notNullable();
   });
 };
 

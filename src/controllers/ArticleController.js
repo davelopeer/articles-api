@@ -1,12 +1,11 @@
 const ArticlesService = require('../services/ArticlesService');
-const Author = require('../models/Author');
 
 class ArticlesController {
-  async getAllArticles(req, res) {
+  async getArticles(req, res) {
     const category = req.query.category;
 
     const articlesService = new ArticlesService();
-    const articles = await articlesService.getAllArticles(category);
+    const articles = await articlesService.getArticles(category);
 
     res.json(articles);
   }

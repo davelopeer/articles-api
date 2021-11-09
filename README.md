@@ -1,81 +1,31 @@
-# Jungle Devs - Node Challenge #001
+# Article API
 
-## Description
+## To do
 
-**Challenge goal**: The purpose of this challenge is to give an overall understanding of a backend application. You’ll be implementing a simplified version of news provider API. The concepts that you’re going to apply are:
+- Create Models and database connections ✔️
 
-- REST architecture;
-- Authentication and permissions;
-- Data modeling and migrations;
-- SQL database;
-- Query optimization;
-- Serialization;
-- Production builds.
+- Create articles endpoints (query params, url params) ✔️
 
-**Target level**: This is an all-around challenge that covers both juniors and experienced devs based on the depth of how the concepts were applied.
+- Create admin endpoints (authors, articles) ✔️
 
-**Final accomplishment**: By the end of this challenge you’ll have a production ready API.
+- Make data-validation for endpoints
 
-## Acceptance criteria
+- Create User model
 
-- Clear instructions on how to run the application in development mode
-- Clear instructions on how to create production builds
-- A good API documentation or collection
-- Models created using [Objection.js](https://vincit.github.io/objection.js/)
-- Login API: `/api/login`
-- Sign-up API: `/api/sign-up`
-- Administrator restricted APIs:
-  - CRUD `/api/admin/authors`
-  - CRUD `/api/admin/articles`
-- List article endpoint `/api/articles?category=:slug` with the following response:
-```json
-[
-  {
-    "author": {
-      "name": "Author Name",
-      "picture": "https://picture.url"
-    },
-    "category": "Category",
-    "title": "Article title",
-    "summary": "This is a summary of the article"
-  },
-  ...
-]
-```
-- Article detail endpoint `/api/articles/:id` with different responses for anonymous and logged users:
+- Create login / sign in (JWT)
 
-    **Anonymous**
-    ```json
-    {
-      "author": {
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>"
-    }
-    ```
+- Create Authentication validation with database
 
-    **Logged user**
-    ```json
-    {
-      "author": {
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>",
-      "body": "<div><p>Second paragraph</p><p>Third paragraph</p></div>"
-    }
-    ```
+- Create Admin validation
 
+- Apply Swagger to endpoints
 
-## Instructions to Run
+- Create documentation and instructions
 
-- Database: `docker-compose up` will start the PostgreSQL DB
-- `yarn dev` is configured to start the app.js using nodemon
+- Tests with Jest
 
+- Production with pm2
+
+- Deploy
+
+- Postman file with examples

@@ -1,5 +1,4 @@
 const Article = require('../models/Article');
-const Author = require('../models/Author');
 
 class ArticleRepository {
   constructor() {
@@ -56,6 +55,19 @@ class ArticleRepository {
         .innerJoin('author', 'author.id', 'article.author_id')
         .where('article.id', '=', id);
   }
+
+  async create(data) {
+    return await this.article.query().insert(data);
+  }
+
+  async update(id, data) {
+    return await this.article.query().update(data).where('id', '=', id);
+  }
+
+  async delete(id) {
+    return await this.article.query().delete().where('id', '=', id);
+  }
+
 }
 
 module.exports = { ArticleRepository };

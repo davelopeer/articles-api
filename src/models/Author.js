@@ -1,4 +1,5 @@
 const { Model } = require('objection');
+const Article = require('./Article');
 const knex = require('../database');
 
 Model.knex(knex);
@@ -8,9 +9,19 @@ class Author extends Model {
     return 'author';
   }
 
-  static get idColumn() {
-    return 'id';
-  }
+  static get relationMappings() {
+    return {
+      article: {
+        relation: Model.HasManyRelation,
+        modelClass: Article,
+        join: {
+          from: 'author.id',
+          to: 'article.author_id'
+        }
+      }
+    }
+  };
+
 }
 
 module.exports = Author;

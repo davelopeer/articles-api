@@ -5,7 +5,7 @@ class ArticlesService {
     this.articleRepository = new ArticleRepository();
   }
 
-  async getAllArticles(category) {
+  async getArticles(category) {
     if (category) {
       return await this.articleRepository.filterByCategory(category);
     }
